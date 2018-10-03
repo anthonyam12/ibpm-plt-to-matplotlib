@@ -15,6 +15,10 @@ class DataObject(object):
         self.v = []
         self.vorticity = []
 
+        # TODO: read these from headers
+        self.row = 199
+        self.col = 199
+
         self.setDataFromFile(filename)
 
 
@@ -30,13 +34,13 @@ class DataObject(object):
             self.y.append(float(parts[1]))
             self.u.append(float(parts[2]))
             self.v.append(float(parts[3]))
-            self.vorticity.append(.7)#float(parts[4]))
+            self.vorticity.append(float(parts[4]))
 
-        self.x = np.atleast_2d(self.x)
-        self.y = np.atleast_2d(self.y)
-        self.u = np.atleast_2d(self.u)
-        self.v = np.atleast_2d(self.v)
-        self.vorticity = np.atleast_2d(self.vorticity)
+        self.x = np.asarray(self.x)
+        self.y = np.asarray(self.y)
+        self.u = np.asarray(self.u)
+        self.v = np.asarray(self.v)
+        self.vorticity = np.asarray(self.vorticity)
 
 
     def top(self, count):
